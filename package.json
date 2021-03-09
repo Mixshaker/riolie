@@ -1,0 +1,28 @@
+{
+  "name": "riolie",
+  "version": "1.0.0",
+  "description": "Riolie website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mixshaker/riolie.git"
+  },
+  "keywords": [
+    "music",
+    "electro",
+    "techno",
+    "house"
+  ],
+  "author": "Mixshaker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mixshaker/riolie/issues"
+  },
+  "homepage": "https://github.com/Mixshaker/riolie#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
