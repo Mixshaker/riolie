@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RELEASES</title>
+
+	<?php 
+            include "blocks/header.php";
+            include "blocks/menu.php";
+    ?>
+
+	<!-- Опрос VK -->
+	<div id="slideout"> 
+        <p>Опрос</p>
+        <div id="slideout_inner">
+    		<div id="vk_poll"></div>
+			<script type="text/javascript">
+			VK.Widgets.Poll("vk_poll", {width: "300"}, "164154951_948b91b641df5ca2a4");
+			</script>
+        </div>	
+	</div>
+   
+	<article> 
+		<div class="releases">
+    
+        <?php
+        
+//функция активизации ссылки
+function changeTextToLink($text){
+    $text = preg_replace("/(^|[\n ])([\w]*?)((www|ftp)\.[^ \,\"\t\n\r<]*)/is", "$1$2<a href=\"http://$3\" target='_blank'><img src='./../images/beatport.png' width='100' alt='Buy on Beatport' title='Buy on Beatport'/></a>", $text);
+    $text = preg_replace("/(^|[\n ])([\w]*?)((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)/is", "$1$2<a href=\"$3\" target='_blank'><img src='./../images/beatport.png' width='100' alt='Buy on Beatport' title='Buy on Beatport'/></a>", $text);
+    return($text);
+}
+//конец функции
+        
+            $result = mysql_query("SELECT * FROM `release` ORDER BY id DESC");
+            while($myrow = mysql_fetch_assoc($result)) 
+             {     
+                $ep_link = $myrow[ep_link];
+                $zippywww = substr($ep_link, 10, 2);
+				$zippywww = preg_replace('/[^0-9]/', '', $zippywww);
+                $zippyf = (strpos($ep_link, 'v/', 10)) + 2;
+                $zippyfile = substr($ep_link, $zippyf, 8);
+                $myrow[ep_info] = nl2br($myrow[ep_info]);
+                $myrow[ep_info] = changeTextToLink($myrow[ep_info]);    
+                
+                $default_image = $myrow[ep_cover];
+                            
+              //проверка на наличие ковра
+            if (empty($default_image)) {
+                $default_image = "./../covers/ep.jpg";
+            };
+			$social_image = substr_replace($default_image, 'http://riolie.pp.ua', 0, 4);
+            
+                print("
+			<div class='ep'> 
+				<div class='title ep_title'><h3>".$myrow[ep_title]."</h3></div>
+				
+					<div class='ep_img'><img src='".$default_image."'></div>
+					
+					<script type='text/javascript'>var zippywww='".$zippywww."';var zippyfile='".$zippyfile."';var zippyvol=80;</script><script type='text/javascript' src='./../js/embed_new.js'> </script>
+					
+					<div class='ep_info'>".$myrow[ep_info]."</div>
+				
+                	<div class='ep_footer'>
+                        <div id='social' class='share42init' data-path='http://riolie.pp.ua/share42/' data-icons-file='icons.png' data-title='".$myrow[ep_title]."' data-image='".$social_image."' data-description='".$myrow[ep_info]."'></div><script type='text/javascript' src='http://riolie.pp.ua/share42/share.js'></script>
+                        Release date: ".date('d.m.Y',strtotime($myrow[ep_date]))."
+                    </div>
+			</div>	
+            
+             ");
+          } 
+
+        ?>            
+			
+		</div>
+	</article>
+
+	<?php include "blocks/footer.php";?>
