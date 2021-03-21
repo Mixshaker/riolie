@@ -57,6 +57,7 @@ ol[class] {
 
 a:not([class]) {
     text-decoration-skip-ink: auto;
+    color: inherit;
 }
 
 
@@ -99,5 +100,67 @@ select {
 
 /* Variables */
 
---main-bg-color: #000;
---main-text-color: #fff;
+:root {
+    --main-bg-color: #000;
+    --main-text-color: #fff;
+    --neon-light: #01ecff;
+    --animation: .2s ease-in;
+}
+
+
+/* Main */
+
+body {
+    font-family: 'Chivo', Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid var(--neon-light);
+}
+
+nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: color var(--animation);
+}
+
+nav a:hover {
+    color: var(--neon-light);
+}
+
+.social-icons a {
+    display: inline-block;
+}
+
+.social-icons a svg {
+    height: 1.25em;
+    width: 1.25em;
+}
+
+main {
+    margin-top: 50px;
+    min-height: calc(100vh - 50px);
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+}
