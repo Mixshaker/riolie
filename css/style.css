@@ -108,6 +108,16 @@ select {
 }
 
 
+/*fonts*/
+
+@font-face {
+    font-family: Sanotra;
+    src: url('../assets/Sanotra.woff') format('woff'), url('../assets/Sanotra.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* Main */
 
 body {
@@ -122,25 +132,44 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    height: 50px;
     width: 100%;
-    border-bottom: 1px solid var(--neon-light);
+    background: #1d1d1d;
+    /* border-bottom: 2px solid var(--neon-light); */
 }
 
 nav {
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 }
 
 nav a {
     text-decoration: none;
-    font-size: 1.25em;
-    font-weight: 400;
+    font-size: .8em;
+    font-weight: 700;
+    padding: 1em 0;
     text-transform: uppercase;
     transition: color var(--animation);
 }
+
+nav>* {
+    display: inline-block;
+    text-align: center;
+    width: 33vw;
+}
+
+@media screen and (max-width:1200px) {
+    nav>* {
+        width: auto;
+    }
+    nav>a {
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width:640px) {}
 
 nav a:hover {
     color: var(--neon-light);
@@ -148,19 +177,53 @@ nav a:hover {
 
 .social-icons a {
     display: inline-block;
+    margin: 0 .8em;
 }
 
 .social-icons a svg {
     height: 1.25em;
-    width: 1.25em;
+    width: 1.5em;
 }
 
 main {
     margin-top: 50px;
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 100px);
 }
 
 footer {
     width: 100%;
     text-align: center;
+    font-size: .64em;
+    opacity: .8;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.vinyl {
+    /* transition: 4s linear; */
+}
+
+.vinyl:hover {
+    /* animation: 4s linear infinite rotate(720deg); */
+}
+
+.hero {
+    height: 90vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 20vw;
+    font-family: Sanotra, Arial, serif;
+    transition: all .5s ease-in;
+    text-shadow: 0.1em 0.1em 0.1em var(--neon-light);
+}
+
+.hero h1:hover {
+    /* transform: skew(45deg) */
 }
