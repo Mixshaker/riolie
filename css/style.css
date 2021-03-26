@@ -220,7 +220,7 @@ footer a {
 .hero h1 {
     font-size: 20vw;
     font-family: Sanotra, Arial, serif;
-    transition: all .5s ease-in;
+    /* transition: all .5s ease-in; */
     text-shadow: 0.1em 0.1em 0.1em var(--neon-light);
 }
 
