@@ -134,7 +134,6 @@ header {
     left: 0;
     width: 100%;
     background: #1d1d1d;
-    /* border-bottom: 2px solid var(--neon-light); */
 }
 
 nav {
@@ -151,7 +150,8 @@ nav a {
     font-weight: 700;
     padding: 1em 0;
     text-transform: uppercase;
-    transition: color var(--animation);
+    transition: all var(--animation);
+    border-bottom: 2px solid transparent;
 }
 
 nav>* {
@@ -173,6 +173,7 @@ nav>* {
 
 nav a:hover {
     color: var(--neon-light);
+    border-color: var(--neon-light);
 }
 
 .social-icons a {
@@ -220,7 +221,6 @@ footer a {
 .hero h1 {
     font-size: 20vw;
     font-family: Sanotra, Arial, serif;
-    /* transition: all .5s ease-in; */
     text-shadow: 0.1em 0.1em 0.1em var(--neon-light);
 }
 

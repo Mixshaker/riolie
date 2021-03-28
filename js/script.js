@@ -1,10 +1,11 @@
 // Home hero section
 
 document.addEventListener("DOMContentLoaded", function() {
+    let heroBlock = document.querySelector('.hero');
     let heroText = document.querySelector('.hero h1');
     if (heroText) {
 
-        document.addEventListener("mousemove", function(e) {
+        heroBlock.addEventListener("mousemove", function(e) {
             let x = e.clientX,
                 y = e.clientY,
                 height = window.innerHeight,
