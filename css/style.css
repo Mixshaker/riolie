@@ -37,11 +37,17 @@ dd {
 
 /* Set core body defaults */
 
+html {
+    scroll-behavior: smooth;
+    scroll-margin-top: 50px;
+}
+
 body {
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    scroll-margin-top: 50px;
 }
 
 
@@ -112,8 +118,8 @@ select {
 
 @font-face {
     font-family: Sanotra;
-    src: url('../assets/Sanotra.woff') format('woff'), url('../assets/Sanotra.ttf') format('truetype');
-    font-weight: normal;
+    src: local('Sanotra'), local('Sanotra Bold'), url('../assets/Sanotra.woff2') format('woff2'), url('../assets/Sanotra.woff') format('woff'), url('../assets/Sanotra.ttf') format('truetype');
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -134,6 +140,7 @@ header {
     left: 0;
     width: 100%;
     background: #1d1d1d;
+    z-index: 999;
 }
 
 nav {
@@ -157,7 +164,7 @@ nav a {
 nav>* {
     display: inline-block;
     text-align: center;
-    width: 33vw;
+    width: 32vw;
 }
 
 @media screen and (max-width:1200px) {
@@ -168,8 +175,6 @@ nav>* {
         width: 20vw;
     }
 }
-
-@media screen and (max-width:640px) {}
 
 nav a:hover {
     color: var(--neon-light);
@@ -188,7 +193,7 @@ nav a:hover {
 
 main {
     margin-top: 50px;
-    min-height: calc(100vh - 100px);
+    margin-bottom: 50px;
 }
 
 footer {
@@ -196,22 +201,15 @@ footer {
     text-align: center;
     font-size: .64em;
     opacity: .8;
+    padding: 1em;
 }
 
 footer a {
     text-decoration: none;
 }
 
-.vinyl {
-    /* transition: 4s linear; */
-}
-
-.vinyl:hover {
-    /* animation: 4s linear infinite rotate(720deg); */
-}
-
 .hero {
-    height: 90vh;
+    height: 95vh;
     text-align: center;
     display: flex;
     align-items: center;
@@ -224,6 +222,68 @@ footer a {
     text-shadow: 0.1em 0.1em 0.1em var(--neon-light);
 }
 
-.hero h1:hover {
-    /* transform: skew(45deg) */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    min-height: 100vh;
+}
+
+
+/* Releases */
+
+.releases iframe {
+    max-width: 50%;
+    padding: 12px;
+}
+
+@media screen and (max-width:767px) {
+    .releases iframe {
+        max-width: 100%;
+        padding: 12px 20px;
+    }
+}
+
+
+/* Podcasts */
+
+.podcasts {
+    text-align: center;
+}
+
+#podcasts img {
+    padding: 1em;
+    max-width: 33%;
+    cursor: pointer;
+    transition: var(--animation);
+}
+
+#podcasts img:hover {
+    transform: scale(1.04);
+}
+
+@media screen and (max-width:767px) {
+    #podcasts img {
+        max-width: 50%;
+    }
+}
+
+#paging {
+    display: inline-block;
+    padding: 5em 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: var(--main-text-color);
+    transition: all var(--animation);
+}
+
+#paging:hover {
+    color: var(--neon-light);
+    transform: scale(1.05);
 }
