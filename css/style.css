@@ -192,8 +192,8 @@ nav a:hover {
 }
 
 main {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 footer {
@@ -209,7 +209,7 @@ footer a {
 }
 
 .hero {
-    height: 95vh;
+    height: calc(100vh - 100px);
     text-align: center;
     display: flex;
     align-items: center;
@@ -226,15 +226,19 @@ footer a {
     display: flex;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 section {
-    min-height: 100vh;
+    min-height: calc(100vh - 200px);
 }
 
 
 /* Releases */
+
+.releases {
+    display: none;
+}
 
 .releases iframe {
     max-width: 50%;
@@ -253,6 +257,7 @@ section {
 
 .podcasts {
     text-align: center;
+    display: none;
 }
 
 #podcasts img {

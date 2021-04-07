@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
 
     let url = "//api.mixcloud.com/riolie/cloudcasts/?limit=15";
+    let podcasts = document.getElementById('podcasts');
 
     async function getInfo(url) {
         const response = await fetch(url);
@@ -33,19 +34,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // console.log(data);
 
-        let podcasts = document.getElementById('podcasts');
-
-
         data.data.forEach(function(el) {
 
             let cover = document.createElement('img');
             cover.src = el.pictures['640wx640h'];
             cover.dataset.mixcloudPlayButton = el.url;
             podcasts.append(cover);
-
         });
 
-        // let paging = document.createElement('a');
         let paging;
         if (data.paging.next) {
             paging = document.getElementById('paging') ? document.getElementById('paging') : document.createElement('a');
@@ -60,7 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     };
 
-    getInfo(url).then(function() {
+    getInfo(url).then(function(data) {
+
+
         // Load more
         let pagingBtn = document.getElementById('paging');
 
@@ -73,6 +71,37 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
+    // Navigation
+    const podcastsBtn = document.getElementById('podcastsBtn');
+    const releasesBtn = document.getElementById('releasesBtn');
+    const podcastsSection = document.querySelector('.podcasts');
+    const releasesSection = document.querySelector('.releases');
+
+
+
+    podcastsBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        podcastsSection.style.display = "block";
+        releasesSection.style.display = "none";
+        clickHandler();
+
+    })
+
+    releasesBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        releasesSection.style.display = "block";
+        podcastsSection.style.display = "none";
+        clickHandler();
+
+    })
+
+
+    function clickHandler() {
+        scroll({
+            top: window.innerHeight,
+            behavior: "smooth"
+        });
+    }
 
 
 });
